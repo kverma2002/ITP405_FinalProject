@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
             BooksTableSeeder::class,
             ReviewsTableSeeder::class,
             BookAuthorsTableSeeder::class,
-            QuestionsTableSeeder::class,
-            AnswersTableSeeder::class
+            PostsTableSeeder::class,
+            CommentsTableSeeder::class
         ]);
     }
 }

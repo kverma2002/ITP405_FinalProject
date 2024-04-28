@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AnswersTableSeeder extends Seeder
+class CommentsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,9 +14,9 @@ class AnswersTableSeeder extends Seeder
     public function run()
     {
         // Main comments
-        DB::table('answers')->insert([
+        DB::table('comments')->insert([
             [
-                'question_id' => 1,
+                'posts_id' => 1,
                 'parent_id' => null, // Main comment has no parent
                 'user_id' => 2, // Assuming a second user exists
                 'content' => 'I highly recommend "Emma" by Jane Austen. It has similar themes.',
@@ -24,7 +24,7 @@ class AnswersTableSeeder extends Seeder
                 'updated_at' => now()
             ],
             [
-                'question_id' => 2,
+                'posts_id' => 2,
                 'parent_id' => null,
                 'user_id' => 3,
                 'content' => 'Classical literature often introduces complex narratives that modern literature builds upon.',
@@ -34,9 +34,9 @@ class AnswersTableSeeder extends Seeder
         ]);
 
         // Nested comments
-        DB::table('answers')->insert([
+        DB::table('comments')->insert([
             [
-                'question_id' => 1,
+                'posts_id' => 1,
                 'parent_id' => 1, // This is a reply to the first comment
                 'user_id' => 1,
                 'content' => 'Thanks for the recommendation! I\'ll check out "Emma".',
@@ -44,7 +44,7 @@ class AnswersTableSeeder extends Seeder
                 'updated_at' => now()
             ],
             [
-                'question_id' => 2,
+                'posts_id' => 2,
                 'parent_id' => 2,
                 'user_id' => 1,
                 'content' => 'Absolutely, the depth in character development in classics is unparalleled.',

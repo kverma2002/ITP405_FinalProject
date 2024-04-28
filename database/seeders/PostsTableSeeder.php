@@ -6,14 +6,14 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class QuestionsTableSeeder extends Seeder
+class PostsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run()
     {
-        DB::table('questions')->insert([
+        DB::table('posts')->insert([
             [
                 'user_id' => 1, // Assuming there's at least one user with ID 1
                 'title' => 'Looking for book recommendations',
