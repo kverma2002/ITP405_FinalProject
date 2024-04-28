@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('isbn')->nullable();
             $table->text('summary')->nullable();
-            $table->string('cover_image')->nullable();
+            // $table->string('cover_image')->nullable();
             $table->foreignId('author_id')->constrained('authors');
             $table->timestamps();
         });
