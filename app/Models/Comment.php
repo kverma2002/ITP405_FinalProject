@@ -9,12 +9,18 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['posts_id', 'parent_id', 'user_id', 'content'];
+
     // Relationship with Post
     public function post()
     {
         return $this->belongsTo(Post::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     // Relationship for nested comments
     public function parent()
     {
@@ -23,6 +29,6 @@ class Comment extends Model
 
     public function replies()
     {
-        return $this->hasMany(Comment::class, 'parent_id');
+        return $this->hasMany(Comment::class, 'parent_id')->with('user', 'replies');
     }
 }

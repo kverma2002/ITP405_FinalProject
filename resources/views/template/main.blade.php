@@ -23,7 +23,7 @@
                         <a class="nav-link" href="{{ url('/library') }}">My Library</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/community') }}">Community</a>
+                        <a class="nav-link" href="{{ route('posts.index') }}">Community</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('profile.index') }}" class="nav-link">Profile</a>
@@ -52,8 +52,13 @@
         </div>
     </nav>
     @if (session('error'))
-        <div class="alert alert-danger mt-3" role="alert">
+        <div class="alert alert-danger mt-3" role="alert" style="max-width: 80%; margin: 20px auto;">
             {{ session('error') }}
+        </div>
+    @endif
+    @if ( session('success'))
+        <div class="alert alert-success" role ="alert" style="max-width: 80%; margin: 20px auto;">
+            {{ session('success')}}
         </div>
     @endif
     <div class="container mt-4">

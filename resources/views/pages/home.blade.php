@@ -11,7 +11,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Owl Carousel JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
+<style>
+    .owl-carousel .item img {
+        height: 350px; /* Adjust the height as needed */
+        object-fit: cover; /* Maintain aspect ratio and cover container */
+    }
+</style>
 <script>
 $(document).ready(function(){
     $('.owl-carousel').owlCarousel({

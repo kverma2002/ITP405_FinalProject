@@ -9,6 +9,13 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id', 'title', 'content', 'book_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
     // Relationship with Book (optional)
     public function book()
     {
@@ -18,6 +25,6 @@ class Post extends Model
     // Relationship with Comment
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'posts_id');
     }
 }

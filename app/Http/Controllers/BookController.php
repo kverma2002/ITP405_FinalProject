@@ -11,7 +11,9 @@ class BookController extends Controller
     {
         $book = Book::with('authors')->findOrFail($id);
 
-        return view('pages/book', compact('book'));
+        $avgRating = round($book->reviews->avg('rating'), 1);
+
+        return view('pages/book', compact('book', 'avgRating'));
     }
 
 }
