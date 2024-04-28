@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_id')->constrained('books');
-            $table->foreignId('user_id')->constrained('users');
-            $table->text('body');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->text('content');
+            $table->foreignId('book_id')->nullable()->constrained('books')->onDelete('set null');
             $table->timestamps();
         });
     }
