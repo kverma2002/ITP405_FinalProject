@@ -15,7 +15,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
@@ -25,14 +25,39 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/community') }}">Community</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('profile.index') }}" class="nav-link">Profile</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex"> <!-- Use d-flex for flexbox alignment -->
+                <ul class="navbar-nav">
+                    @if (Auth::check())
+                        <li>
+                            <form method="post" action="{{ route('auth.logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-link">Logout</button>
+                            </form>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="{{ route('registration.index') }}" class="nav-link">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link">Login</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
     </nav>
-    
+    @if (session('error'))
+        <div class="alert alert-danger mt-3" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="container mt-4">
         @yield('content')
     </div>
-
 </body>
 </html>

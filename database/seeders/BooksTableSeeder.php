@@ -20,19 +20,21 @@ class BooksTableSeeder extends Seeder
                 'title' => 'Pride and Prejudice',
                 'isbn' => '1234567890123',
                 'summary' => 'A romantic novel of manners.',
-                // 'cover_image' => '/images/pride_and_prejudice.jpg',
+                'cover_image' => url('/storage/pride_and_prejudice.jpg'),
                 'author_id' => 1,
+                'published_date' => '1813-01-28',
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ],
             [
                 'title' => 'Sense and Sensibility',
                 'isbn' => '1234567890124',
                 'summary' => 'A story of two sisters with contrasting temperaments.',
-                // 'cover_image' => '/images/sense_and_sensibility.jpg',
+                'cover_image' => url('/storage/sense_and_sensibility.jpg'),
                 'author_id' => 1,
+                'published_date' => '1811-10-30',
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now(),
             ],
         ]);
 
@@ -42,8 +44,9 @@ class BooksTableSeeder extends Seeder
                 'title' => 'Great Expectations',
                 'isbn' => '2234567890123',
                 'summary' => 'A coming-of-age novel of an orphan nicknamed Pip.',
-                // 'cover_image' => '/images/great_expectations.jpg',
+                'cover_image' => url('/storage/sense_and_sensibility.jpg'),
                 'author_id' => 2,
+                'published_date' => '1861-12-01',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -51,8 +54,9 @@ class BooksTableSeeder extends Seeder
                 'title' => 'A Tale of Two Cities',
                 'isbn' => '2234567890124',
                 'summary' => 'Set in London and Paris before and during the French Revolution.',
-                // 'cover_image' => '/images/a_tale_of_two_cities.jpg',
+                'cover_image' => url('/storage/sense_and_sensibility.jpg'),
                 'author_id' => 2,
+                'published_date' => '1859-04-30',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -64,8 +68,9 @@ class BooksTableSeeder extends Seeder
                 'title' => 'The Adventures of Tom Sawyer',
                 'isbn' => '3234567890123',
                 'summary' => 'A tale of young boys growing up along the Mississippi River.',
-                // 'cover_image' => '/images/the_adventures_of_tom_sawyer.jpg',
+                'cover_image' => url('/storage/sense_and_sensibility.jpg'),
                 'author_id' => 3,
+                'published_date' => '1876-12-10',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -73,8 +78,9 @@ class BooksTableSeeder extends Seeder
                 'title' => 'Adventures of Huckleberry Finn',
                 'isbn' => '3234567890124',
                 'summary' => 'Direct sequel to "The Adventures of Tom Sawyer".',
-                // 'cover_image' => '/images/adventures_of_huckleberry_finn.jpg',
+                'cover_image' => url('/storage/sense_and_sensibility.jpg'),
                 'author_id' => 3,
+                'published_date' => '1884-12-10',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -86,8 +92,9 @@ class BooksTableSeeder extends Seeder
                 'title' => 'Mrs Dalloway',
                 'isbn' => '4234567890123',
                 'summary' => 'Details a day in the life of Clarissa Dalloway in post-World War I England.',
-                // 'cover_image' => '/images/mrs_dalloway.jpg',
+                'cover_image' => url('/storage/sense_and_sensibility.jpg'),
                 'author_id' => 4,
+                'published_date' => '1925-05-14',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -95,8 +102,43 @@ class BooksTableSeeder extends Seeder
                 'title' => 'To the Lighthouse',
                 'isbn' => '4234567890124',
                 'summary' => 'The Ramsay family and their visits to the Isle of Skye in Scotland between 1910 and 1920.',
-                // 'cover_image' => '/images/to_the_lighthouse.jpg',
+                'cover_image' => url('/storage/sense_and_sensibility.jpg'),
                 'author_id' => 4,
+                'published_date' => '1927-05-05',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+        ]);
+
+        // Books for Real Author
+        DB::table('books')->insert([
+            [
+                'title' => 'Real Book',
+                'isbn' => '12345678910',
+                'summary' => 'This very real book is very good',
+                'cover_image' => url('storage/Mrs Dalloway.jpg'),
+                'author_id' => 5,
+                'published_date' => '2023-01-01',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => 'Fake Book',
+                'isbn' => '10987654321',
+                'summary' => 'This fake book is unfortunately bad',
+                'cover_image' => url('storage/Mrs Dalloway.jpg'),
+                'author_id' => 5,
+                'published_date' => '2022-12-31',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => 'Very Fake Book',
+                'isbn' => '10987654321',
+                'summary' => 'This very fake book is unfortunately very bad',
+                'cover_image' => url('storage/Mrs Dalloway.jpg'),
+                'author_id' => 5,
+                'published_date' => '2022-12-30',
                 'created_at' => now(),
                 'updated_at' => now()
             ],

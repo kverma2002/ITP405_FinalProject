@@ -24,7 +24,11 @@ class BookAuthorsTableSeeder extends Seeder
             ['book_id' => 6, 'author_id' => 3], // Adventures of Huckleberry Finn by Mark Twain
             ['book_id' => 6, 'author_id' => 5], // Adventures of Huckleberry Finn by Real Author
             ['book_id' => 7, 'author_id' => 4], // Mrs Dalloway by Virginia Woolf
-            ['book_id' => 8, 'author_id' => 4]  // To the Lighthouse by Virginia Woolf
+            ['book_id' => 8, 'author_id' => 4],  // To the Lighthouse by Virginia Woolf
+            ['book_id' => 9, 'author_id' => 5],  
+            ['book_id' => 10, 'author_id' => 5],  
+            ['book_id' => 11, 'author_id' => 5],
+
         ];
 
         DB::table('book_authors')->insert($book_authors);
