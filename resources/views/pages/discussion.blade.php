@@ -42,7 +42,7 @@
     <form action="{{ route('posts.index') }}" method="GET" class="mb-5">
         <div class="input-group">
             <select name="book_id" id="book" class="form-select">
-                <option value="">-- Select Book --</option>
+                <option value="">General</option>
                 @foreach ($books as $book)
                     <option value="{{ $book->id }}" {{ (string) $book->id === request('book_id') ? "selected" : ""}}>
                         {{ $book->title }}

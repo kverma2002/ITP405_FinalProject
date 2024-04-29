@@ -16,14 +16,13 @@ class DiscussionController extends Controller
         $query = Post::with('user', 'comments');
 
         // Check if a book_id is provided for filtering
-        if ($request->has('book_id') && $request->book_id !== '') {
+        if ($request->has('book_id') && $request->book_id !== "") {
             $query->where('book_id', $request->book_id);
         }
 
         // Get the posts, paginated
-        $posts = $query->paginate(10);
+        $posts = $query->get();
 
-        // Optionally, pass the books list if the form is being built in this view
         $books = Book::all();
 
         return view('pages/discussion', compact('posts', 'books'));
@@ -70,7 +69,7 @@ class DiscussionController extends Controller
         $request->validate([
             'post_id' => 'required|exists:posts,id', // Ensure the post exists
             'content' => 'required|string',          // Ensure content is provided and is a string
-            'parent_id' => 'nullable|exists:comments,id'  // Optional, but must exist if provided
+            'parent_id' => 'nullable|exists:comments,id' 
         ]);
 
         // Create and save the new comment

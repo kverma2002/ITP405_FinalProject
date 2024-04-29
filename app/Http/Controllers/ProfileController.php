@@ -16,7 +16,7 @@ class ProfileController extends Controller
         $user = auth()->user();
         $book = new Book; 
         $author = new Author; 
-        $genres = Genre::all(); // Assuming you have a Genre model
+        $genres = Genre::all();
         $authors = Author::all(); // Fetch all authors
 
         return view('profile/index', compact('user', 'book', 'author', 'genres', 'authors'));

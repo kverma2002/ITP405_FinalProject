@@ -15,10 +15,10 @@ class PostsTableSeeder extends Seeder
     {
         DB::table('posts')->insert([
             [
-                'user_id' => 1, // Assuming there's at least one user with ID 1
+                'user_id' => 1,
                 'title' => 'Looking for book recommendations',
                 'content' => 'Can anyone recommend books similar to "Pride and Prejudice"?',
-                'book_id' => 1, // Optional link to a book ID
+                'book_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -26,7 +26,7 @@ class PostsTableSeeder extends Seeder
                 'user_id' => 2,
                 'title' => 'Discussion: The impact of classical literature',
                 'content' => 'How do you think classical literature has shaped modern writing?',
-                'book_id' => NULL, // Optional link to a book ID
+                'book_id' => NULL,
                 'created_at' => now(),
                 'updated_at' => now()
             ]

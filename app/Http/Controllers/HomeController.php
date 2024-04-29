@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         // Get the highest-rated books
         $highestRatedBooks = Book::with('reviews')
-            ->withAvg('reviews', 'rating') // Assuming you store ratings in the 'reviews' table
+            ->withAvg('reviews', 'rating') 
             ->orderByDesc('reviews_avg_rating')
             ->take(10)
             ->get();

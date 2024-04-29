@@ -18,7 +18,7 @@ class CommentsTableSeeder extends Seeder
             [
                 'posts_id' => 1,
                 'parent_id' => null, // Main comment has no parent
-                'user_id' => 2, // Assuming a second user exists
+                'user_id' => 2, 
                 'content' => 'I highly recommend "Emma" by Jane Austen. It has similar themes.',
                 'created_at' => now(),
                 'updated_at' => now()
