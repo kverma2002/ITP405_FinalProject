@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Author;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -11,10 +14,10 @@ class ProfileController extends Controller
     {
 
         $user = auth()->user();
-        $book = new \App\Models\Book; 
-        $author = new \App\Models\Author; 
-        $genres = \App\Models\Genre::all(); // Assuming you have a Genre model
-        $authors = \App\Models\Author::all(); // Fetch all authors
+        $book = new Book; 
+        $author = new Author; 
+        $genres = Genre::all(); // Assuming you have a Genre model
+        $authors = Author::all(); // Fetch all authors
 
         return view('profile/index', compact('user', 'book', 'author', 'genres', 'authors'));
     }

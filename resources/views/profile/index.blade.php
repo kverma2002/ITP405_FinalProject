@@ -92,10 +92,16 @@
             <div class="mb-3">
                 <label for="name" class="form-label">Author Name</label>
                 <input type="text" class="form-control" id="name" name="name" required>
+                @error('name')
+                    <small class="text-danger"> {{$message}} </small>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="biography" class="form-label">Biography</label>
                 <textarea class="form-control" id="biography" name="biography"></textarea>
+                @error('biography')
+                    <small class="text-danger"> {{$message}} </small>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

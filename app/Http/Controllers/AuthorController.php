@@ -18,7 +18,7 @@ class AuthorController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
-            'biography' => 'nullable',
+            'biography' => 'required|max:300',
         ]);
 
         $author = new Author();
