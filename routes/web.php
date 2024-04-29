@@ -3,11 +3,13 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DiscussionController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -32,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
     Route::get('/books/{id}', [BookController::class, "show"] )->name('books.show');
+    Route::post('/books/toggle-favorite', [FavoriteController::class, 'toggleFavorite'])->name('books.toggleFavorite');
+    Route::post('/books/toggle-wishlist', [WishlistController::class, 'toggleWishlist'])->name('books.toggleWishlist');
 
     Route::get('/authors/{id}', [AuthorController::class, "show"] )->name('authors.show');
 

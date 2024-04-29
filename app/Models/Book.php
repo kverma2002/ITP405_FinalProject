@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,6 +29,26 @@ class Book extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function favoredByUsers()
+    {
+        return $this->belongsToMany(User::class, 'favorite_books');
+    }
+
+    public function isFavorited()
+    {
+        return $this->favoredByUsers()->where('user_id', Auth::id())->exists();
+    }
+
+    public function wishedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'user_wishlist');
+    }
+
+    public function isWishedByUser()
+    {
+        return $this->wishedByUsers()->where('user_id', auth()->id())->exists();
     }
 
 }

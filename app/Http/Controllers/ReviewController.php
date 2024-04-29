@@ -16,6 +16,16 @@ class ReviewController extends Controller
             'comment' => 'required|string|max:100', // Adjust max length as needed
         ]);
 
+        // Check if the user has already reviewed the book
+        $existingReview = Review::where('book_id', $request->input('book_id'))
+                                ->where('user_id', auth()->id())
+                                ->first();
+
+        // If the user has already reviewed the book, redirect back with an error message
+        if ($existingReview) {
+            return redirect()->back()->with('error', 'You have already submitted a review for this book.');
+        }
+
         // Create a new review
         $review = new Review();
         $review->book_id = $request->input('book_id');
@@ -26,4 +36,5 @@ class ReviewController extends Controller
 
         return redirect()->route('books.show', $request->input('book_id'))->with('success', 'Review submitted successfully!');
     }
+
 }

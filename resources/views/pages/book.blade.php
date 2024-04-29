@@ -11,11 +11,40 @@
                     <img src="{{ $book->cover_image }}" alt="{{ $book->title }}" class="img-fluid">
                 </div>
                 <div class="col-md-10">
-                    <h2>{{ $book->title }}</h2>
+                    @if($book->isFavorited())
+                        <h2 style="color: gold;">{{ $book->title }}</h2>
+                    @else
+                        <h2>{{ $book->title }}</h2>
+                    @endif
                     <!-- Display average rating -->
                     <p>Average Rating: {{ $avgRating }} / 5</p>
+                    <!-- Favorite Button -->
+                    <div class="row">
+                        <div class="col-md-6 text-center mb-3">
+                            <form action="{{ route('books.toggleFavorite') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                @if($book->isFavorited())
+                                    <button type="submit" class="btn btn-danger">Remove from Favorites</button>
+                                @else
+                                    <button type="submit" class="btn btn-success">Add to Favorites</button>
+                                @endif
+                            </form>
+                        </div>
+                        <div class="col-md-6 text-center mb-3">
+                            <form action="{{ route('books.toggleWishlist') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                @if($book->isWishedByUser())
+                                    <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
+                                @else
+                                    <button type="submit" class="btn btn-warning">Add to Wishlist</button>
+                                @endif
+                            </form>
+                        </div>
+                    </div>
                     <!-- Review form -->
-                    <form action="{{ route('reviews.store') }}" method="POST">
+                    <form action="{{ route('reviews.store') }}" method="POST" style="border: 2px solid #ccc; border-radius: 10px; padding: 20px; margin-bottom: 20px;">
                         @csrf
                         <input type="hidden" name="book_id" value="{{ $book->id }}">
                         <div class="mb-3">
