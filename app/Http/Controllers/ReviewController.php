@@ -37,4 +37,38 @@ class ReviewController extends Controller
         return redirect()->route('books.show', $request->input('book_id'))->with('success', 'Review submitted successfully!');
     }
 
+    public function destroy($id)
+    {
+        $review = Review::findOrFail($id);
+
+        $review->delete();
+
+        return redirect()->back()->with('success', 'Review deleted successfully.');
+    }
+
+    public function edit($id)
+{
+        $review = Review::findOrFail($id);
+        if (auth()->id() !== $review->user_id) {
+            return redirect()->route('home')->with('error', 'Unauthorized access.');
+        }
+        
+        return view('pages/review_edit', compact('review'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'required|string|max:1000',
+        ]);
+
+        $review = Review::findOrFail($id);
+        $review->rating = $request->rating;
+        $review->comment = $request->comment;
+        $review->save();
+
+        return redirect()->route('books.show', $review->book_id)->with('success', 'Review updated successfully');
+    }
+
 }

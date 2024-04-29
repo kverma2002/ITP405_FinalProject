@@ -66,4 +66,6 @@ class Book extends Model
         return $this->readByUsers()->where('user_id', auth()->id())->exists();
     }
 
+    
+
 }

@@ -11,17 +11,17 @@ use Intervention\Image\Facades\Image;
 class HomeController extends Controller
 {
 
-    private function resizeCoverImages($books)
-    {
-        foreach ($books as $book) {
-            $coverImagePath = public_path($book->cover_image);
-            if (file_exists($coverImagePath)) {
-                Image::make($coverImagePath)->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save($coverImagePath);
-            }
-        }
-    }
+    // private function resizeCoverImages($books)
+    // {
+    //     foreach ($books as $book) {
+    //         $coverImagePath = public_path($book->cover_image);
+    //         if (file_exists($coverImagePath)) {
+    //             Image::make($coverImagePath)->resize(300, null, function ($constraint) {
+    //                 $constraint->aspectRatio();
+    //             })->save($coverImagePath);
+    //         }
+    //     }
+    // }
     public function index()
     {
         // Get the highest-rated books
@@ -36,8 +36,8 @@ class HomeController extends Controller
             ->take(10)
             ->get();
 
-        $this->resizeCoverImages($highestRatedBooks);
-        $this->resizeCoverImages($newestBooks);
+        // $this->resizeCoverImages($highestRatedBooks);
+        // $this->resizeCoverImages($newestBooks);
 
         return view('pages/home', compact('highestRatedBooks', 'newestBooks'));
     }

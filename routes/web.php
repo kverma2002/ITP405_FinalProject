@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReadController;
 use App\Http\Controllers\RegistrationController;
@@ -22,26 +23,28 @@ Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/library', function () {
-        return view('pages/my_library');
-    });
-    
-    // Route::get('/community', function () {
-    //     return view('pages/community');
-    // });
 
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    
-    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-
+    Route::get('/books', [BookController::class, 'index'])->name('books.index');
     Route::get('/books/{id}', [BookController::class, "show"] )->name('books.show');
+    Route::post('/books/store', [BookController::class, 'store'])->name('books.store');
+
     Route::post('/books/toggle-favorite', [FavoriteController::class, 'toggleFavorite'])->name('books.toggleFavorite');
     Route::post('/books/toggle-wishlist', [WishlistController::class, 'toggleWishlist'])->name('books.toggleWishlist');
     Route::post('/books/toggle-read', [ReadController::class, 'toggleRead'])->name('books.toggleRead');
 
-    Route::get('/authors/{id}', [AuthorController::class, "show"] )->name('authors.show');
-
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
+    Route::get('/reviews/{id}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
+    Route::put('/reviews/{id}', [ReviewController::class, 'update'])->name('reviews.update');
+
+
+    Route::get('/authors/{id}', [AuthorController::class, "show"] )->name('authors.show');
+    Route::post('/authors/store', [AuthorController::class, 'store'])->name('authors.store');
+
+    Route::get('/library', [LibraryController::class, "index"] )->name('library.index');
+    
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index'); 
+    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
     Route::get('/community', [DiscussionController::class, 'index'])->name('posts.index');
     Route::post('/community', [DiscussionController::class, 'storePost'])->name('posts.store');

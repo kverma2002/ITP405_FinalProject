@@ -9,8 +9,13 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('profile/index', [
-            'user' => Auth::user(),
-        ]);
+
+        $user = auth()->user();
+        $book = new \App\Models\Book; 
+        $author = new \App\Models\Author; 
+        $genres = \App\Models\Genre::all(); // Assuming you have a Genre model
+        $authors = \App\Models\Author::all(); // Fetch all authors
+
+        return view('profile/index', compact('user', 'book', 'author', 'genres', 'authors'));
     }
 }

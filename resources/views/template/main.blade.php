@@ -20,6 +20,9 @@
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('books.index') }}">Books</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url('/library') }}">My Library</a>
                     </li>
                     <li class="nav-item">

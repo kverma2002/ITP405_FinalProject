@@ -1,6 +1,6 @@
 @extends('template/main')
 
-@section('title', 'Book')
+@section('title', $book->title)
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
         <div class="col-md-6">
             <div class="col">
                 <div class="col-md-10">
-                    <img src="{{ $book->cover_image }}" alt="{{ $book->title }}" class="img-fluid">
+                    <img src="{{ asset($book->cover_image) }}" alt="{{ $book->title }}" class="img-fluid">
                 </div>
                 <div class="col-md-10">
                     @if($book->isFavorited())
@@ -96,6 +96,16 @@
                         <h5 class="card-title">Rating: {{ $review->rating }}/5</h5>
                         <p class="card-text">{{ $review->comment }}</p>
                         <p class="card-text"><small class="text-muted">Reviewed by user {{ $review->user->username }} on {{ $review->created_at->toFormattedDateString() }}</small></p>
+                        @if (auth()->check() && auth()->id() === $review->user_id)
+                            <div class="d-flex justify-content-start">
+                                <a href="{{ route('reviews.edit', $review->id) }}" class="btn btn-primary me-2">Edit</a>
+                                <form method="POST" action="{{ route('reviews.destroy', $review->id) }}" onsubmit="return confirm('Are you sure you want to delete this review?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        @endif
                     </div>
                 </div>
             @empty

@@ -59,7 +59,7 @@ $(document).ready(function(){
                     <img src="{{ asset($book->cover_image) }}" alt="{{ $book->title }}" style="width: 100%; max-height: 450px; object-fit: cover;">
                 </a>
                 <h5>{{ $book->title }}</h5>
-                <p>Released on: {{ $book->published_date->format('M d, Y') }}</p>
+                <p>Released on: {{ $book->published_date->format('M Y') }}</p>
             </div>
         @endforeach
     </div>

@@ -1,28 +1,21 @@
 @extends('template/main')
 
-@section('title', 'Author')
+@section('title', $author->name)
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ $author->name }}</div>
-                    <div class="card-body">
-                        @if ($author->biography)
-                            <p>{{ $author->biography }}</p>
-                        @else
-                            <p>No biography available.</p>
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <!-- You can add a photo here if needed -->
-                {{-- @if ($author->photo_url)
-                    <img src="{{ $author->photo_url }}" alt="{{ $author->name }}" class="img-fluid">
-                @endif --}}
-            </div>
-        </div>
+<div class="container">
+    <h1>{{ $author->name }}</h1>
+    <p>{{ $author->biography }}</p>
+    <hr>
+    <h3>Books by {{ $author->name }}</h3>
+    <div class="list-group">
+        @foreach ($author->books as $book)
+            <a href="{{route('books.show', [$book->id])}}" class="list-group-item list-group-item-action">
+                <strong>{{ $book->title }}</strong> - Published on: {{ $book->published_date->format('M d, Y') }}
+                <br>
+                <small>ISBN: {{ $book->isbn }}</small>
+            </a>
+        @endforeach
     </div>
+</div>
 @endsection
