@@ -23,6 +23,7 @@ class BooksTableSeeder extends Seeder
                 'cover_image' => url('/storage/pride_and_prejudice.jpg'),
                 'author_id' => 1,
                 'published_date' => '1813-01-28',
+                'genre_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -33,6 +34,7 @@ class BooksTableSeeder extends Seeder
                 'cover_image' => url('/storage/sense_and_sensibility.jpg'),
                 'author_id' => 1,
                 'published_date' => '1811-10-30',
+                'genre_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -47,6 +49,7 @@ class BooksTableSeeder extends Seeder
                 'cover_image' => url('storage/great_expectations.jpg'),
                 'author_id' => 2,
                 'published_date' => '1861-12-01',
+                'genre_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -57,6 +60,7 @@ class BooksTableSeeder extends Seeder
                 'cover_image' => url('storage/A Tale of Two Cities.jpg'),
                 'author_id' => 2,
                 'published_date' => '1859-04-30',
+                'genre_id' => 4,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -71,6 +75,7 @@ class BooksTableSeeder extends Seeder
                 'cover_image' => url('storage/The Adventures of Tom Sawyer.jpg'),
                 'author_id' => 3,
                 'published_date' => '1876-12-10',
+                'genre_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -81,6 +86,7 @@ class BooksTableSeeder extends Seeder
                 'cover_image' => url('storage/Adventures of Huckleberry Finn.jpg'),
                 'author_id' => 3,
                 'published_date' => '1884-12-10',
+                'genre_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -95,6 +101,7 @@ class BooksTableSeeder extends Seeder
                 'cover_image' => url('storage/Mrs Dalloway.jpg'),
                 'author_id' => 4,
                 'published_date' => '1925-05-14',
+                'genre_id' => 5,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -105,6 +112,7 @@ class BooksTableSeeder extends Seeder
                 'cover_image' => url('storage/To the Lighthouse.jpg'),
                 'author_id' => 4,
                 'published_date' => '1927-05-05',
+                'genre_id' => 5,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -119,6 +127,7 @@ class BooksTableSeeder extends Seeder
                 'cover_image' => url('storage/Mrs Dalloway.jpg'),
                 'author_id' => 5,
                 'published_date' => '2023-01-01',
+                'genre_id' => 9,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -129,6 +138,7 @@ class BooksTableSeeder extends Seeder
                 'cover_image' => url('storage/Mrs Dalloway.jpg'),
                 'author_id' => 5,
                 'published_date' => '2022-12-31',
+                'genre_id' => 6,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -139,6 +149,7 @@ class BooksTableSeeder extends Seeder
                 'cover_image' => url('storage/Mrs Dalloway.jpg'),
                 'author_id' => 5,
                 'published_date' => '2022-12-30',
+                'genre_id' => 10,
                 'created_at' => now(),
                 'updated_at' => now()
             ],

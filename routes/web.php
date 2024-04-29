@@ -6,6 +6,7 @@ use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReadController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AuthorController;
@@ -36,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/books/{id}', [BookController::class, "show"] )->name('books.show');
     Route::post('/books/toggle-favorite', [FavoriteController::class, 'toggleFavorite'])->name('books.toggleFavorite');
     Route::post('/books/toggle-wishlist', [WishlistController::class, 'toggleWishlist'])->name('books.toggleWishlist');
+    Route::post('/books/toggle-read', [ReadController::class, 'toggleRead'])->name('books.toggleRead');
 
     Route::get('/authors/{id}', [AuthorController::class, "show"] )->name('authors.show');
 

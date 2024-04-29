@@ -9,7 +9,7 @@ class BookController extends Controller
 {
     public function show($id)
     {
-        $book = Book::with('authors')->findOrFail($id);
+        $book = Book::with('authors', 'genre')->findOrFail($id);
 
         $avgRating = round($book->reviews->avg('rating'), 1);
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('cover_image')->nullable();
             $table->foreignId('author_id')->constrained('authors');
             $table->date('published_date');
+            $table->foreignId('genre_id')->constrained('genres')->onDelete('cascade');
             $table->timestamps();
         });
     }

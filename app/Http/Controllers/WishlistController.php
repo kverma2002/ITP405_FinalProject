@@ -16,11 +16,11 @@ class WishlistController extends Controller
         if ($user->wishlist()->where('book_id', $book->id)->exists()) {
             // Remove the favorite
             $user->wishlist()->detach($book->id);
-            $message = 'Book removed from favorites.';
+            $message = 'Book removed from wishlist.';
         } else {
             // Add the favorite
             $user->wishlist()->attach($book->id);
-            $message = 'Book added to favorites.';
+            $message = 'Book added to wishlist.';
         }
 
         return back()->with('success', $message);

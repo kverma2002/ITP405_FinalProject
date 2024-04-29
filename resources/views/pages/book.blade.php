@@ -20,7 +20,7 @@
                     <p>Average Rating: {{ $avgRating }} / 5</p>
                     <!-- Favorite Button -->
                     <div class="row">
-                        <div class="col-md-6 text-center mb-3">
+                        <div class="col-md-4 text-center mb-3">
                             <form action="{{ route('books.toggleFavorite') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="book_id" value="{{ $book->id }}">
@@ -31,7 +31,7 @@
                                 @endif
                             </form>
                         </div>
-                        <div class="col-md-6 text-center mb-3">
+                        <div class="col-md-4 text-center mb-3">
                             <form action="{{ route('books.toggleWishlist') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="book_id" value="{{ $book->id }}">
@@ -39,6 +39,17 @@
                                     <button type="submit" class="btn btn-danger">Remove from Wishlist</button>
                                 @else
                                     <button type="submit" class="btn btn-warning">Add to Wishlist</button>
+                                @endif
+                            </form>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <form action="{{ route('books.toggleRead') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                @if($book->isReadByUser())
+                                    <button type="submit" class="btn btn-danger">Remove from Read List</button>
+                                @else
+                                    <button type="submit" class="btn btn-warning">Add to Read list</button>
                                 @endif
                             </form>
                         </div>
@@ -64,6 +75,7 @@
             <h1>{{ $book->title }}</h1>
             <p><strong>ISBN:</strong> {{ $book->isbn }}</p>
             <p><strong>Published Date:</strong> {{ $book->published_date->toFormattedDateString() }}</p>
+            <p><strong>Genre:</strong> {{ $book->genre->name }}</p>
             <h3>Summary</h3>
             <p>{{ $book->summary }}</p>
             
