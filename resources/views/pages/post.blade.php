@@ -22,7 +22,6 @@
         </form>
     </div>
 
-
     @if ($post->comments->isNotEmpty())
         @foreach ($post->comments as $comment)
             <div class="card mt-3">

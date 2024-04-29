@@ -10,15 +10,21 @@ use Auth;
 
 class DiscussionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Fetch all posts
-        $posts = Post::with('user')
-            ->withCount('comments')  // This will add a 'comments_count' attribute to each post
-            ->orderByDesc('created_at')
-            ->get(); // Include the user data for each post
+        // Start the query builder for posts and eager load necessary relationships
+        $query = Post::with('user', 'comments');
 
-            $books = Book::orderBy('title')->get();
+        // Check if a book_id is provided for filtering
+        if ($request->has('book_id') && $request->book_id !== '') {
+            $query->where('book_id', $request->book_id);
+        }
+
+        // Get the posts, paginated
+        $posts = $query->paginate(10);
+
+        // Optionally, pass the books list if the form is being built in this view
+        $books = Book::all();
 
         return view('pages/discussion', compact('posts', 'books'));
     }
